@@ -3,21 +3,16 @@
   <body>
     <div id="game"></div>
     <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script type="text/javascript" src="js/Hero.js"></script>
     <script>
       Crafty.init(350,window.innerHeight - 50);
 
       Crafty.background('#000');
 
+      
 
+      Crafty.e("Hero");
 
-      console.debug(Crafty.stage.elem.style.height);
-
-      var elemStyle = Crafty.stage.elem.style;
-
-      Crafty.e('2D, DOM, Color, Fourway')
-  .attr({x: elemStyle.width.replace("px","") / 2 - 7.5, y: elemStyle.height.replace("px","") - 35, w: 10, h: 15})
-  .color('#FFFFFF')
-  .fourway(4);
     </script>
   </body>
 </html>
