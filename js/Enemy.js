@@ -3,17 +3,19 @@ Crafty.c("Enemy",{
 
 		var elemStyle = Crafty.stage.elem.style;
 
-		this.requires("2D,DOM,Color,Collision").attr({x: elemStyle.width.replace("px","") / 2 - 7.5, y: elemStyle.height.replace("px","") - 35, w: 100, h: 105,
+        Crafty.sprite(1629,"graphics/bossShip.png",{"bossShip":[0,0]});
+
+		this.requires("2D,Canvas,bossShip,Collision")
+        .attr({x: elemStyle.width.replace("px","") / 2, y: 2, w: 100*1.5, h: 105*1.5,
             dX: Crafty.math.randomInt(2, 5),
             dY: Crafty.math.randomInt(2, 5) })
-  			.color('rgb(255,0,0)')
         	.bind('EnterFrame', function () {
-        		if (this.y <= 0 || this.y >= window.innerHeight - 65) {
+        		if (this.y <= 0 || this.y >= Crafty.stage.elem.clientHeight - this.h) {
                     this.dY *= -1;
                     this.shoot();
                 }
 
-        		if (this.x <= 0 || this.x > 250) {
+        		if (this.x <= 0 || this.x > Crafty.stage.elem.clientWidth - this.w) {
             		this.dX *= -1;
                     this.shoot();
         		}
