@@ -8,10 +8,23 @@
     <script>
       Crafty.init(350,window.innerHeight - 50);
 
-      Crafty.background('#000');
+      Crafty.background('#FFFFFF url(graphics/background.png) repeat-y 0 0');
 
-      
 
+      Crafty.bind("EnterFrame",function(e){
+
+
+        var stageStyle = Crafty.stage.elem.style;
+
+        console.debug(stageStyle.backgroundPositionY);
+        var yPos = parseInt(stageStyle.backgroundPositionY.replace("px",""),10);
+
+
+        
+
+        Crafty.stage.elem.style.backgroundPositionY = (yPos+1) + "px";
+      });
+    
       Crafty.e("Hero");
 
     </script>
