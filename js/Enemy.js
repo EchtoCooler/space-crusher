@@ -5,7 +5,8 @@ Crafty.c("Enemy",{
         Crafty.sprite(1629,"graphics/bossShip.png",{"bossShip":[0,0]});
 
 		this.requires("2D,Canvas,bossShip,Solid, Collision")
-        .attr({x: elemStyle.width.replace("px","") / 2, y: 2, w: 100*1.5, h: 105*1.5, life:10,
+        .attr({x: elemStyle.width.replace("px","") / 2, y: 2, w: 100*1.5, h: 105*1.5, 
+            life: 10,
             dX: Crafty.math.randomInt(2, 5),
             dY: Crafty.math.randomInt(2, 5) })
         	.bind('EnterFrame', function () {
@@ -22,13 +23,10 @@ Crafty.c("Enemy",{
                 this.x += this.dX;
                 this.y += this.dY;
         	})
-<<<<<<< HEAD
-            .getHit();
-=======
             .bind("GameOver",function(){
                 this.destroy();
-            });
->>>>>>> origin/master
+            })
+            .getHit();
 	},
     getHit: function(){ 
         this.onHit('Bullet', function(obj){
