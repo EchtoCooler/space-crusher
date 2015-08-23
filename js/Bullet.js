@@ -9,7 +9,7 @@ Crafty.c("Bullet",{
 			this.y -= this.yspeed;
 		})
 		.onHit('Enemy', function() {
-			this.destroy();
+			//this.destroy();
 		});
 	}
 });
