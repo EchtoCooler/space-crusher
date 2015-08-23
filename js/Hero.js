@@ -10,6 +10,20 @@ Crafty.c("Hero",{
             	if(e.keyCode === Crafty.keys.SPACE){
                 	this.shoot();
             	} 
+        	})
+        	.bind('EnterFrame', function () {
+        		if (this.x < 0) {
+            		this.x = 0;
+        		}
+        		if (this.x > 340) {
+            		this.x = 340;
+        		}
+        		if (this.y > window.innerHeight - 65) {
+        			this.y = window.innerHeight - 65;
+        		}
+        		if (this.y < 0) {
+        			this.y = 0;
+        		}
         	});
 	},
 	shoot: function(){
