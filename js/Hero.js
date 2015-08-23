@@ -11,7 +11,7 @@ Crafty.c("Hero",{
 
         this.currentDirection = 0;
 
-        this.requires("2D,Canvas,fighter,Fourway,SpriteAnimation")
+        this.requires("2D,Canvas,fighter,Collision,Fourway,SpriteAnimation")
         .attr(
             {x: elemStyle.width.replace("px","") / 2 - width/2,
              y: elemStyle.height.replace("px","") - height,
@@ -58,6 +58,15 @@ Crafty.c("Hero",{
                 }
             }
             this.currentDirection = xDir;
+        })
+        .bind("GameOver",function(){
+            this.destroy();
+        })
+        .onHit("Bullet",function(){
+            Crafty.trigger("GameOver");
+        })
+        .onHit("Enemy",function(){
+            Crafty.trigger("GameOver");
         });
 
         this.reel("centerToRight",250,3,0,4);
@@ -73,7 +82,7 @@ Crafty.c("Hero",{
 
 		bullet.attr({
 			x: this._x + this._w/2-1,
-			y: this._y + this._h/2-2.5
+			y: this._y - 15
 		})
 	}
 });

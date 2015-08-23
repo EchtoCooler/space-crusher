@@ -22,7 +22,13 @@ Crafty.c("Enemy",{
                 this.x += this.dX;
                 this.y += this.dY;
         	})
+<<<<<<< HEAD
             .getHit();
+=======
+            .bind("GameOver",function(){
+                this.destroy();
+            });
+>>>>>>> origin/master
 	},
     getHit: function(){ 
         this.onHit('Bullet', function(obj){
