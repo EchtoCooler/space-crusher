@@ -11,10 +11,31 @@
 
       Crafty.background('#FFFFFF url(graphics/background.png) repeat-y 0 0');
 
+      startGame();
 
-      Crafty.bind("EnterFrame",function(e){
+      Crafty.bind("GameOver",function(e){
+        Crafty.e("2D, Canvas, Text").attr({x: 20, y: 100 }).text("Game Over").textColor("white").textFont({ size: '40px', weight: 'bold' }).bind("KeyDown",function(e){if (e.keyCode === Crafty.keys.S){this.destroy();}});
+        Crafty.e("2D, Canvas, Text").attr({x: 20, y: 300 }).text("Press \"S\" to try again...").textColor("white").textFont({ size: '20px', type: 'italic' }).bind("KeyDown",function(e){if (e.keyCode === Crafty.keys.S){this.destroy();}});
+        Crafty.unbind("EnterFrame",stageScroll);
 
+        Crafty.bind("KeyDown",startGameFromGameOver);
+      });
 
+      function startGameFromGameOver(e){
+        if (e.keyCode === Crafty.keys.S){
+          startGame();
+        }
+      }
+
+      function startGame(){
+        console.debug("starting game");
+        Crafty.unbind("KeyDown",startGameFromGameOver);
+        Crafty.bind("EnterFrame",stageScroll);
+        Crafty.e("Hero");
+        Crafty.e("Enemy");
+      }
+
+      function stageScroll(){
         var stageStyle = Crafty.stage.elem.style;
 
         var yPos = parseInt(stageStyle.backgroundPositionY.replace("px",""),10);
@@ -23,9 +44,7 @@
         
 
         Crafty.stage.elem.style.backgroundPositionY = (yPos+1) + "px";
-      });
-      Crafty.e("Hero");
-      Crafty.e("Enemy");
+      }
 
     </script>
   </body>

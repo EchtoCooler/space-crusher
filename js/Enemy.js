@@ -22,7 +22,10 @@ Crafty.c("Enemy",{
 
                 this.x += this.dX;
                 this.y += this.dY;
-        	});
+        	})
+            .bind("GameOver",function(){
+                this.destroy();
+            });
 	},
 	shoot: function(){
 		var bullet = Crafty.e("Bullet");
