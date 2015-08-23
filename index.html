@@ -5,6 +5,7 @@
     <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
     <script type="text/javascript" src="js/Hero.js"></script>
     <script type="text/javascript" src="js/Bullet.js"></script>
+    <script type="text/javascript" src="js/Enemy.js"></script>
     <script>
       Crafty.init(350,window.innerHeight - 50);
 
@@ -24,8 +25,8 @@
 
         Crafty.stage.elem.style.backgroundPositionY = (yPos+1) + "px";
       });
-    
       Crafty.e("Hero");
+      Crafty.e("Enemy");
 
     </script>
   </body>
